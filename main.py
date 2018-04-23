@@ -44,18 +44,25 @@ def main():
 
 def draw_game_area(screen):
     '''绘制游戏区域'''
-    # 绘制顶部边界线
-    pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP),
-                     (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP))
-    # 绘制底部边界线
-    pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP + 20 * CELL_WIDTH),
-                     (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP + 20 * CELL_WIDTH))
-    # 绘制左侧边界线
-    pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP),
-                     (GAME_AREA_LEFT, GAME_AREA_TOP + 20 * CELL_WIDTH))
-    # 绘制右侧边界线
-    pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT + 10 * CELL_WIDTH, GAME_AREA_TOP),
-                     (GAME_AREA_LEFT + 10 * CELL_WIDTH, GAME_AREA_TOP + 20 * CELL_WIDTH))
+    # # 绘制顶部边界线
+    # pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP),
+    #                  (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP))
+    # # 绘制底部边界线
+    # pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP + 20 * CELL_WIDTH),
+    #                  (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP + 20 * CELL_WIDTH))
+    # # 绘制左侧边界线
+    # pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP),
+    #                  (GAME_AREA_LEFT, GAME_AREA_TOP + 20 * CELL_WIDTH))
+    # # 绘制右侧边界线
+    # pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT + 10 * CELL_WIDTH, GAME_AREA_TOP),
+    #                  (GAME_AREA_LEFT + 10 * CELL_WIDTH, GAME_AREA_TOP + 20 * CELL_WIDTH))
+    
+    for r in range(21):
+        pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP + r * CELL_WIDTH),
+                         (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP + r * CELL_WIDTH))
+    for c in range(11):
+        pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT + c * CELL_WIDTH, GAME_AREA_TOP),
+                         (GAME_AREA_LEFT + c * CELL_WIDTH, GAME_AREA_TOP + GAME_AREA_HEIGHT))
 
 
 if __name__ == '__main__':
