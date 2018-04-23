@@ -36,33 +36,33 @@ def main():
 
         #设定屏幕背景色
         screen.fill(bg_color)
-
         #绘制直线
         draw_game_area(screen)
+        #绘制小方块
+        draw_cell(screen, GAME_AREA_LEFT, GAME_AREA_TOP)
         #让最近绘制的屏幕可见
         pygame.display.flip()
 
 def draw_game_area(screen):
     '''绘制游戏区域'''
-    # # 绘制顶部边界线
-    # pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP),
-    #                  (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP))
-    # # 绘制底部边界线
-    # pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP + 20 * CELL_WIDTH),
-    #                  (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP + 20 * CELL_WIDTH))
-    # # 绘制左侧边界线
-    # pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP),
-    #                  (GAME_AREA_LEFT, GAME_AREA_TOP + 20 * CELL_WIDTH))
-    # # 绘制右侧边界线
-    # pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT + 10 * CELL_WIDTH, GAME_AREA_TOP),
-    #                  (GAME_AREA_LEFT + 10 * CELL_WIDTH, GAME_AREA_TOP + 20 * CELL_WIDTH))
-    
     for r in range(21):
         pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP + r * CELL_WIDTH),
                          (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP + r * CELL_WIDTH))
     for c in range(11):
         pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT + c * CELL_WIDTH, GAME_AREA_TOP),
                          (GAME_AREA_LEFT + c * CELL_WIDTH, GAME_AREA_TOP + GAME_AREA_HEIGHT))
+
+def draw_cell(screen, left, top):
+    '''绘制单元格，也即绘制小方块'''
+    '''
+    left: 单元格离窗口左边界的距离。单位是像素。
+    top: 单元格离窗口上边界的距离。
+    '''
+    cell_left_top = (left, top)    #小方块的左上角坐标点
+    cell_width_height = (CELL_WIDTH, CELL_WIDTH)    #小方块的宽度和高度
+    cell_rect = pygame.Rect(cell_left_top, cell_width_height)   #生成由左上角坐标和宽度高度定义的矩形
+    pygame.draw.rect(screen, CELL_COLOR, cell_rect)    #绘制正方形
+
 
 
 if __name__ == '__main__':
