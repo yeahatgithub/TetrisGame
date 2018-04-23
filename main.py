@@ -25,8 +25,16 @@ def main():
         #设定屏幕背景色
         screen.fill(bg_color)
 
+        #绘制直线
+        draw_game_area(screen)
         #让最近绘制的屏幕可见
         pygame.display.flip()
+
+def draw_game_area(screen):
+    '''绘制游戏区域'''
+    pygame.draw.line(screen, (0, 0, 0), (100, 100), (200, 200))
+    #绘制一条线。第二个参数(0, 0, 0)决定颜色是黑色。起点坐标是(100, 100)，终点是(200, 200)
+
 
 if __name__ == '__main__':
     main()
