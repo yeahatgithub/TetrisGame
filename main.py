@@ -5,6 +5,18 @@
 import sys
 import pygame
 
+SCREEN_WIDTH = 1200      #窗口宽度
+SCREEN_HEIGHT = 900     #窗口高度
+CELL_WIDTH = 40         #方块在20*10个单元格组成的游戏区内移动。每个单元格的边长是40个像素。
+GAME_AREA_WIDTH = CELL_WIDTH * 10       #一行10个单元格
+GAME_AREA_HEIGHT = CELL_WIDTH * 20      #一共20行
+GAME_AREA_LEFT = (SCREEN_WIDTH - GAME_AREA_WIDTH) // 2      #游戏区左侧的空白区的宽度
+GAME_AREA_TOP = SCREEN_HEIGHT - GAME_AREA_HEIGHT          #游戏区顶部的空白区的宽度
+EDGE_COLOR = (0, 0, 0)          #游戏区单元格边界线的颜色。今后，网格线会被去除。
+CELL_COLOR = (100, 100, 100)    #单元格填充色。
+BG_COLOR = (230, 230, 230)      #窗口背景色
+
+
 def main():
     #初始化pygame。启用Pygame必不可少的一步，在程序开始阶段执行。
     pygame.init()
@@ -32,8 +44,18 @@ def main():
 
 def draw_game_area(screen):
     '''绘制游戏区域'''
-    pygame.draw.line(screen, (0, 0, 0), (100, 100), (200, 200))
-    #绘制一条线。第二个参数(0, 0, 0)决定颜色是黑色。起点坐标是(100, 100)，终点是(200, 200)
+    # 绘制顶部边界线
+    pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP),
+                     (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP))
+    # 绘制底部边界线
+    pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP + 20 * CELL_WIDTH),
+                     (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP + 20 * CELL_WIDTH))
+    # 绘制左侧边界线
+    pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP),
+                     (GAME_AREA_LEFT, GAME_AREA_TOP + 20 * CELL_WIDTH))
+    # 绘制右侧边界线
+    pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT + 10 * CELL_WIDTH, GAME_AREA_TOP),
+                     (GAME_AREA_LEFT + 10 * CELL_WIDTH, GAME_AREA_TOP + 20 * CELL_WIDTH))
 
 
 if __name__ == '__main__':
