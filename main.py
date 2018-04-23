@@ -39,7 +39,7 @@ def main():
         #绘制直线
         draw_game_area(screen)
         #绘制小方块
-        draw_cell(screen, GAME_AREA_LEFT, GAME_AREA_TOP)
+        draw_cell(screen, GAME_AREA_LEFT + 4 * CELL_WIDTH, GAME_AREA_TOP)
         #让最近绘制的屏幕可见
         pygame.display.flip()
 
