@@ -6,8 +6,10 @@
 SCREEN_WIDTH = 1200      #窗口宽度
 SCREEN_HEIGHT = 900     #窗口高度
 CELL_WIDTH = 40         #方块在20*10个单元格组成的游戏区内移动。每个单元格的边长是40个像素。
-GAME_AREA_WIDTH = CELL_WIDTH * 10       #一行10个单元格
-GAME_AREA_HEIGHT = CELL_WIDTH * 20      #一共20行
+LINE_NUM = 20           #游戏区域共20行
+COLUMN_NUM = 10         #游戏区域共10列
+GAME_AREA_WIDTH = CELL_WIDTH * COLUMN_NUM     #游戏区域宽度（单位：像素）
+GAME_AREA_HEIGHT = CELL_WIDTH * LINE_NUM      #游戏区域高度
 GAME_AREA_LEFT = (SCREEN_WIDTH - GAME_AREA_WIDTH) // 2      #游戏区左侧的空白区的宽度
 GAME_AREA_TOP = SCREEN_HEIGHT - GAME_AREA_HEIGHT          #游戏区顶部的空白区的宽度
 EDGE_COLOR = (0, 0, 0)          #游戏区单元格边界线的颜色。今后，网格线会被去除。
