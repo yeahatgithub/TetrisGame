@@ -79,4 +79,17 @@ class Piece():
 
     def turn(self):
         shape_list_len = len(PIECES[self.shape])
-        self.turn_times = (self.turn_times + 1) % shape_list_len
+        if self.can_turn():
+            self.turn_times = (self.turn_times + 1) % shape_list_len
+
+    def can_turn(self):
+        shape_list_len = len(PIECES[self.shape])
+        turn_times = (self.turn_times + 1) % shape_list_len
+        shape_mtx = PIECES[self.shape][turn_times]
+        for r in range(len(shape_mtx)):
+            for c in range(len(shape_mtx[0])):
+                if shape_mtx[r][c] == 'O':
+                    if (self.x + c < 0 or self.x + c >= COLUMN_NUM) or (self.y + r < 0 or self.y + r >= LINE_NUM):
+                        return False
+        return True
+

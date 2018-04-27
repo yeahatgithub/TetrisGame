@@ -17,7 +17,7 @@ def main():
     #屏幕背景色
     bg_color = (230, 230, 230)
     #生成方块对象
-    piece = Piece('S', screen)
+    piece = Piece('I', screen)
 
     #游戏主循环
     while True:
