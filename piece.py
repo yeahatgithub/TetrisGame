@@ -12,12 +12,12 @@ class Piece():
         self.x = 3
         self.y = 0
         self.shape = shape
-        self.turn = 0   #翻转了几次，决定显示的模样
+        self.turn_times = 0   #翻转了几次，决定显示的模样
         self.screen = screen
 
     def paint(self):
         shape_template = PIECES[self.shape]
-        shape_turn = shape_template[self.turn]
+        shape_turn = shape_template[self.turn_times]
         #print(shape_turn)
         for r in range(len(shape_turn)):
             for c in range(len(shape_turn[0])):
@@ -47,7 +47,7 @@ class Piece():
             self.y += 1
 
     def can_move_right(self):
-        shape_mtx = PIECES[self.shape][0]  #姿态矩阵
+        shape_mtx = PIECES[self.shape][self.turn_times]  #姿态矩阵
         # print(shape_mtx)
         for r in range(len(shape_mtx)):
             for c in range(len(shape_mtx[0])):
@@ -57,7 +57,7 @@ class Piece():
         return True
 
     def can_move_left(self):
-        shape_mtx = PIECES[self.shape][0]  #姿态矩阵
+        shape_mtx = PIECES[self.shape][self.turn_times]  #姿态矩阵
         # print(shape_mtx)
         for r in range(len(shape_mtx)):
             for c in range(len(shape_mtx[0])):
@@ -67,7 +67,7 @@ class Piece():
         return True
 
     def can_move_down(self):
-        shape_mtx = PIECES[self.shape][0]  #姿态矩阵
+        shape_mtx = PIECES[self.shape][self.turn_times]  #姿态矩阵
         # print(shape_mtx)
         for r in range(len(shape_mtx)):
             for c in range(len(shape_mtx[0])):
@@ -75,3 +75,8 @@ class Piece():
                     if self.y + r >= LINE_NUM - 1:
                         return False
         return True
+
+
+    def turn(self):
+        shape_list_len = len(PIECES[self.shape])
+        self.turn_times = (self.turn_times + 1) % shape_list_len

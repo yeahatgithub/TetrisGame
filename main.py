@@ -52,7 +52,8 @@ def check_events(piece):
                 # print("向下方向键被按下")
                 piece.move_down()
             elif event.key == pygame.K_UP:
-                print("向上方向键被按下")
+                # print("向上方向键被按下")
+                piece.turn()
             elif event.key == pygame.K_RIGHT:
                 # print("向右方向键被按下")
                 piece.move_right()
