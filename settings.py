@@ -88,4 +88,5 @@ PIECES = {'S': S_SHAPE_TEMPLATE,
           'L': L_SHAPE_TEMPLATE,
           'I': I_SHAPE_TEMPLATE,
           'O': O_SHAPE_TEMPLATE,
-          'T': T_SHAPE_TEMPLATE}
+          'T': T_SHAPE_TEMPLATE
+          }

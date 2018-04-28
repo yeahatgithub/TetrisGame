@@ -14,6 +14,7 @@ class Piece():
         self.shape = shape
         self.turn_times = 0   #翻转了几次，决定显示的模样
         self.screen = screen
+        self.is_on_bottom = False    #到达底部了吗？
 
     def paint(self):
         shape_template = PIECES[self.shape]
@@ -42,9 +43,11 @@ class Piece():
             self.x -= 1
 
     def move_down(self):
-        '''方块向下移动1格'''
+        '''方块向下移动1格。如果到达了底部，设置is_on_bottom属性为True.'''
         if self.can_move_down():
             self.y += 1
+        else:
+            self.is_on_bottom = True
 
     def can_move_right(self):
         shape_mtx = PIECES[self.shape][self.turn_times]  #姿态矩阵

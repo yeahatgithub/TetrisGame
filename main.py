@@ -16,11 +16,14 @@ def main():
 
     #屏幕背景色
     bg_color = (230, 230, 230)
-    #生成方块对象
-    piece = Piece('I', screen)
+    piece = None
 
     #游戏主循环
     while True:
+        #生成方块对象
+        if not piece or piece.is_on_bottom:
+            piece = Piece('I', screen)
+
         #监视键盘和鼠标事件
         check_events(piece)
 
