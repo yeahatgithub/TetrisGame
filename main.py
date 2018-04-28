@@ -5,6 +5,7 @@
 import sys
 import pygame
 import random
+import time
 from settings import *
 from piece import Piece
 
@@ -18,7 +19,7 @@ def main():
     #屏幕背景色
     bg_color = (230, 230, 230)
     piece = None
-
+    random.seed(int(time.time()))    #产生不同的随机序列
     #游戏主循环
     while True:
         #生成方块对象
