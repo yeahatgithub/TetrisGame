@@ -49,6 +49,10 @@ class Piece():
         else:
             self.is_on_bottom = True
 
+    def fall_down(self):
+        while not self.is_on_bottom:
+            self.move_down()
+
     def can_move_right(self):
         shape_mtx = PIECES[self.shape][self.turn_times]  #姿态矩阵
         # print(shape_mtx)
