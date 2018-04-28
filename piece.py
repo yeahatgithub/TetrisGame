@@ -30,7 +30,7 @@ class Piece():
                          y * CELL_WIDTH + GAME_AREA_TOP + 1)
         cell_width_height = (CELL_WIDTH - 2, CELL_WIDTH - 2)
         cell_rect = Rect(cell_position, cell_width_height)
-        pygame.draw.rect(self.screen, CELL_COLOR, cell_rect)
+        pygame.draw.rect(self.screen, PIECE_COLORS[self.shape], cell_rect)
 
     def move_right(self):
         '''方块向右移动1个单元格'''

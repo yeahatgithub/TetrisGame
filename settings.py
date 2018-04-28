@@ -90,3 +90,15 @@ PIECES = {'S': S_SHAPE_TEMPLATE,
           'O': O_SHAPE_TEMPLATE,
           'T': T_SHAPE_TEMPLATE
           }
+
+PIECE_TYPES = ['S', 'Z', 'J', 'L', 'I', 'O', 'T']
+
+PIECE_COLORS = {
+    'S': (0, 255, 128),
+    'Z': (255, 128, 255),
+    'J': (128, 0, 255),
+    'L': (0, 0, 255),
+    'I': (255, 255, 0),
+    'O': (255, 0, 0),
+    'T': (255, 128, 0)
+}

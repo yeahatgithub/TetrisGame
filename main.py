@@ -4,6 +4,7 @@
 # @Copyright:  MIT
 import sys
 import pygame
+import random
 from settings import *
 from piece import Piece
 
@@ -22,7 +23,7 @@ def main():
     while True:
         #生成方块对象
         if not piece or piece.is_on_bottom:
-            piece = Piece('I', screen)
+            piece = Piece(random.choice(PIECE_TYPES), screen)
 
         #监视键盘和鼠标事件
         check_events(piece)
