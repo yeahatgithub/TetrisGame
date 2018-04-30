@@ -23,14 +23,14 @@ def main():
     bg_color = (230, 230, 230)
 
     random.seed(int(time.time()))    #产生不同的随机序列
-    piece = Piece(random.choice(PIECE_TYPES), screen)
     game_wall = GameWall(screen)
+    piece = Piece(random.choice(PIECE_TYPES), screen, game_wall)
     #游戏主循环
     while True:
         #方块触底的话
         if piece.is_on_bottom:
             game_wall.add_to_wall(piece)
-            piece = Piece(random.choice(PIECE_TYPES), screen)
+            piece = Piece(random.choice(PIECE_TYPES), screen, game_wall)
 
         #监视键盘和鼠标事件
         check_events(piece)
