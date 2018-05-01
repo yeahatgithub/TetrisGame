@@ -105,3 +105,6 @@ PIECE_COLORS = {
 
 WALL_BLANK_LABEL = '-'   #墙体矩阵中表示无砖块
 TIMER_INTERVAL = 1000   #方块自动落下的等待时间初始值。
+
+SCORE_LABEL_COLOR = (0, 0, 0)
+SCORE_COLOR = (255, 0, 0)

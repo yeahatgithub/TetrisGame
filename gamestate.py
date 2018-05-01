@@ -14,6 +14,10 @@ class GameState():
         self.piece = Piece(random.choice(PIECE_TYPES), screen, self.wall)
         self.timer_interval = TIMER_INTERVAL   #1000ms
         self.set_timer(self.timer_interval)
+        self.game_score = 0
 
     def set_timer(self, timer_interval):
         self.game_timer = pygame.time.set_timer(pygame.USEREVENT, timer_interval)
+
+    def add_score(self, score):
+        self.game_score += score

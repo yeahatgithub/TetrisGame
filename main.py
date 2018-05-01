@@ -24,14 +24,14 @@ def main():
     bg_color = (230, 230, 230)
 
     random.seed(int(time.time()))    #产生不同的随机序列
-    # game_wall = GameWall(screen)
-    # piece = Piece(random.choice(PIECE_TYPES), screen, game_wall)
     game_state = GameState(screen)
     #游戏主循环
     while True:
         #方块触底的话
         if game_state.piece.is_on_bottom:
             game_state.wall.add_to_wall(game_state.piece)
+            game_state.add_score(game_state.wall.eliminate_lines())
+            # print(game_state.game_score)
             game_state.piece = Piece(random.choice(PIECE_TYPES), screen, game_state.wall)
 
         #监视键盘和鼠标事件
@@ -40,7 +40,7 @@ def main():
         #设定屏幕背景色
         screen.fill(bg_color)
         #绘制游戏区域网格线和墙体
-        GameDisplay.draw_game_area(screen, game_state.wall)
+        GameDisplay.draw_game_area(screen, game_state)
         #绘制方块
         game_state.piece.paint()
         #让最近绘制的屏幕可见
