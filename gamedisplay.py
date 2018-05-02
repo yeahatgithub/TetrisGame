@@ -30,6 +30,8 @@ class GameDisplay():
         GameDisplay.draw_score(screen, game_state.game_score)
         if game_state.stopped:
             GameDisplay.draw_start_prompt(screen, game_resource)
+        if game_state.paused:
+            GameDisplay.draw_pause_prompt(screen, game_resource)
 
     @staticmethod
     def draw_wall(game_wall):
@@ -58,3 +60,13 @@ class GameDisplay():
     def draw_start_prompt(screen, game_resource):
         start_tip_position = (GAME_AREA_LEFT + 2 * CELL_WIDTH, GAME_AREA_TOP + 10 * CELL_WIDTH)
         screen.blit(game_resource.load_newgame_img(), start_tip_position)
+
+
+    @staticmethod
+    def draw_pause_prompt(screen, game_resource):
+        '''显示游戏暂停'''
+        pause_position = (GAME_AREA_LEFT + 1 * CELL_WIDTH, GAME_AREA_TOP + 9 * CELL_WIDTH)
+        screen.blit(game_resource.load_pausing_img(), pause_position)
+
+        resume_tip_position = (GAME_AREA_LEFT + 1 * CELL_WIDTH, GAME_AREA_TOP + 11 * CELL_WIDTH)
+        screen.blit(game_resource.load_continue_img(), resume_tip_position)
