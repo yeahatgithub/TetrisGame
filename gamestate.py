@@ -30,7 +30,7 @@ class GameState():
         self.piece = Piece(random.choice(PIECE_TYPES), self.screen, self.wall)
 
     def pause_game(self):
-        pygame.time.set_timer(pygame.USEREVENT, 0)   #0表示清除定时器
+        pygame.time.set_timer(pygame.USEREVENT, 0)   #传入0表示清除定时器
         self.paused = True
 
     def resume_game(self):
