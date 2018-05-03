@@ -31,10 +31,7 @@ def main():
     while True:
         #方块触底的话
         if game_state.piece and game_state.piece.is_on_bottom:
-            game_state.wall.add_to_wall(game_state.piece)
-            game_state.add_score(game_state.wall.eliminate_lines())
-            # print(game_state.game_score)
-            game_state.piece = Piece(random.choice(PIECE_TYPES), screen, game_state.wall)
+            game_state.touch_bottom()
 
         #监视键盘和鼠标事件
         check_events(game_state)

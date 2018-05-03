@@ -63,7 +63,7 @@ class Piece():
         for r in range(len(shape_mtx)):
             for c in range(len(shape_mtx[0])):
                 if shape_mtx[r][c] == 'O':
-                    if self.x + c >= COLUMN_NUM - 1:
+                    if self.x + c >= COLUMN_NUM - 1:  #TODO: 撞到墙的话，不能右移
                         return False
         return True
 
@@ -73,7 +73,7 @@ class Piece():
         for r in range(len(shape_mtx)):
             for c in range(len(shape_mtx[0])):
                 if shape_mtx[r][c] == 'O':
-                    if self.x + c <= 0:
+                    if self.x + c <= 0:  #TODO: 撞到墙的话，不能左移
                         return False
         return True
 
@@ -101,6 +101,6 @@ class Piece():
             for c in range(len(shape_mtx[0])):
                 if shape_mtx[r][c] == 'O':
                     if (self.x + c < 0 or self.x + c >= COLUMN_NUM) or (self.y + r < 0 or self.y + r >= LINE_NUM):
-                        return False
+                        return False    #TODO:  撞到墙的话，不能翻转
         return True
 

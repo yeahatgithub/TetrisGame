@@ -9,6 +9,7 @@ class GameResource():
         self.newgame_img = None
         self.pausing_img = None
         self.continue_img = None
+        self.gameover_img = None
 
     def load_newgame_img(self):
         if not self.newgame_img:
@@ -24,3 +25,9 @@ class GameResource():
         if not self.continue_img:
             self.continue_img = pygame.image.load(self.img_path + "press-p-continue.png").convert_alpha()
         return self.continue_img
+
+    def load_gameover_img(self):
+        if not self.gameover_img:
+            self.gameover_img = pygame.image.load(self.img_path + "game-over.png").convert_alpha()
+
+        return self.gameover_img

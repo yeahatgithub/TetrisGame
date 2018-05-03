@@ -29,6 +29,8 @@ class GameDisplay():
         GameDisplay.draw_wall(game_state.wall)
         GameDisplay.draw_score(screen, game_state.game_score)
         if game_state.stopped:
+            if game_state.session_count > 0:
+                GameDisplay.draw_game_over(screen, game_resource)
             GameDisplay.draw_start_prompt(screen, game_resource)
         if game_state.paused:
             GameDisplay.draw_pause_prompt(screen, game_resource)
@@ -70,3 +72,8 @@ class GameDisplay():
 
         resume_tip_position = (GAME_AREA_LEFT + 1 * CELL_WIDTH, GAME_AREA_TOP + 11 * CELL_WIDTH)
         screen.blit(game_resource.load_continue_img(), resume_tip_position)
+
+    @staticmethod
+    def draw_game_over(screen, game_resource):
+        gameover_position = (GAME_AREA_LEFT + 4 * CELL_WIDTH - CELL_WIDTH // 2, GAME_AREA_TOP + 8 * CELL_WIDTH)
+        screen.blit(game_resource.load_gameover_img(), gameover_position)
