@@ -48,13 +48,13 @@ class GameState():
     def touch_bottom(self):
         self.wall.add_to_wall(self.piece)
         self.add_score(self.wall.eliminate_lines())
-        # print(game_state.game_score)
         for c in range(COLUMN_NUM):
             if self.wall.is_wall(0, c):
-                # game_area.draw_gameover()   #在这里绘制文字是不起作用的。必须放到主循环中。
                 self.stopped = True
                 break
         if not self.stopped:
-            self.piece = Piece(random.choice(PIECE_TYPES), self.screen, self.wall)  #TODO: 新生成的方块撞到墙，意味着游戏结束。
-        else:
+            self.piece = Piece(random.choice(PIECE_TYPES), self.screen, self.wall)
+            if self.piece.hit_wall():
+                self.stopped = True
+        if self.stopped:
             self.stop_timer()
