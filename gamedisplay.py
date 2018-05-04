@@ -111,8 +111,8 @@ class GameDisplay():
 
             for cell in cells:
                 color = cell[2]
-                left_top = (start_x + (cell[0] - min_c) * CELL_WIDTH + 1,
-                                      start_y + (cell[1] - min_r) * CELL_WIDTH + 1)
+                left_top = (start_x + (cell[0] - min_c) * CELL_WIDTH,
+                                      start_y + (cell[1] - min_r) * CELL_WIDTH)
                 GameDisplay.draw_cell_rect(screen, left_top, color)
 
     @staticmethod
