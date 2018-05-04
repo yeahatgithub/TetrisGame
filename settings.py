@@ -108,3 +108,6 @@ TIMER_INTERVAL = 1000   #方块自动落下的等待时间初始值。
 
 SCORE_LABEL_COLOR = (0, 0, 0)
 SCORE_COLOR = (255, 0, 0)
+
+EDGE_WIDTH = 5      #游戏区域外框线宽度
+MARGIN_WIDTH = 40   #游戏区域外框线与其他窗口元素之间的间距

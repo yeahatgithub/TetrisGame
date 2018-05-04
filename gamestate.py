@@ -12,6 +12,7 @@ class GameState():
         self.screen = screen
         self.wall = GameWall(screen)
         self.piece = None
+        self.next_piece = None
         self.timer_interval = TIMER_INTERVAL   #1000ms
         self.game_score = 0
         self.stopped = True
@@ -31,7 +32,8 @@ class GameState():
         self.stopped = False
         self.set_timer(TIMER_INTERVAL)
         self.timer_interval = TIMER_INTERVAL
-        self.piece = Piece(random.choice(PIECE_TYPES), self.screen, self.wall)
+        self.piece = self.new_piece()  #生成第一个方块。此时self.piece=None, self.next_piece引用方块对象。
+        self.piece = self.new_piece()  #生成第二个方块，此时self.piece引用方块对象。
         self.session_count += 1
         self.wall.clear()
         self.game_score = 0
@@ -53,8 +55,14 @@ class GameState():
                 self.stopped = True
                 break
         if not self.stopped:
-            self.piece = Piece(random.choice(PIECE_TYPES), self.screen, self.wall)
+            self.piece = self.new_piece()
             if self.piece.hit_wall():
                 self.stopped = True
         if self.stopped:
             self.stop_timer()
+
+    def new_piece(self):
+        self.piece = self.next_piece
+        self.next_piece = Piece(random.choice(PIECE_TYPES), self.screen, self.wall)
+
+        return self.piece
