@@ -22,14 +22,8 @@ class GameDisplay():
         pygame.draw.rect(screen, color, cell_rect)
 
     @staticmethod
-    def draw_game_area(screen, game_state, game_resource):
+    def draw_game_window(screen, game_state, game_resource):
         '''绘制游戏区域'''
-        # for r in range(21):
-        #     pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT, GAME_AREA_TOP + r * CELL_WIDTH),
-        #                      (GAME_AREA_LEFT + GAME_AREA_WIDTH, GAME_AREA_TOP + r * CELL_WIDTH))
-        # for c in range(11):
-        #     pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT + c * CELL_WIDTH, GAME_AREA_TOP),
-        #                      (GAME_AREA_LEFT + c * CELL_WIDTH, GAME_AREA_TOP + GAME_AREA_HEIGHT))
         GameDisplay.draw_border(screen, GAME_AREA_LEFT - EDGE_WIDTH, GAME_AREA_TOP, LINE_NUM, COLUMN_NUM)
 
         GameDisplay.draw_wall(game_state.wall)
@@ -41,6 +35,7 @@ class GameDisplay():
         if game_state.paused:
             GameDisplay.draw_pause_prompt(screen, game_resource)
         GameDisplay.draw_next_piece(screen, game_state.next_piece)
+        GameDisplay.draw_mannual(screen)
 
     @staticmethod
     def draw_wall(game_wall):
@@ -131,3 +126,64 @@ class GameDisplay():
         bottom_border = pygame.Rect(start_x, start_y + EDGE_WIDTH + line_num * CELL_WIDTH,
                                     2 * EDGE_WIDTH + column_num * CELL_WIDTH, EDGE_WIDTH)
         pygame.draw.rect(screen, EDGE_COLOR, bottom_border)
+
+    @staticmethod
+    def draw_mannual(screen):
+        base_position_x = 40
+        base_position_y = GAME_AREA_TOP + 40
+        title_font = pygame.font.SysFont('stkaiti', 28)
+        title_surface = title_font.render(u'玩法：', True, TITLE_COLOR)
+        title_position = (base_position_x, base_position_y)
+        screen.blit(title_surface, title_position)
+
+        base_position_y += 60
+        gamectrl_label_font = pygame.font.SysFont('stkaiti', 24)
+        gamectrl_label_surface = gamectrl_label_font.render(u'游戏控制', True, TITLE_COLOR)
+        gamectrl_label_position = (base_position_x, base_position_y)
+        screen.blit(gamectrl_label_surface, gamectrl_label_position)
+
+        base_position_y += 40
+        man_font = pygame.font.SysFont('stkaiti', 20)
+        man_down_surface = man_font.render(u'开始：s字母键；退出：q字母键', False, HANZI_COLOR)
+        man_down_position = (base_position_x, base_position_y)
+        screen.blit(man_down_surface, man_down_position)
+
+        base_position_y += 40
+        # man_font = pygame.font.SysFont('stkaiti', 20)
+        man_pause_surface = man_font.render(u'暂停/继续：p字母键', False, HANZI_COLOR)
+        man_pause_position = (base_position_x, base_position_y)
+        screen.blit(man_pause_surface, man_pause_position)
+
+        base_position_y += 40
+        # man_font = pygame.font.SysFont('stkaiti', 20)
+        man_restart_surface = man_font.render(u'重玩：r字母键', False, HANZI_COLOR)
+        man_restart_position = (base_position_x, base_position_y)
+        screen.blit(man_restart_surface, man_restart_position)
+
+        base_position_y += 40
+        # man_font = pygame.font.SysFont('stkaiti', 20)
+        man_music_surface = man_font.render(u'暂停/继续播放音乐：m字母键', False, HANZI_COLOR)
+        man_music_position = (base_position_x, base_position_y)
+        screen.blit(man_music_surface, man_music_position)
+
+        base_position_y += 60
+        # gamectrl_label_font = pygame.font.SysFont('stkaiti', 24)
+        gamectrl_label_surface = gamectrl_label_font.render(u'方块控制', True, TITLE_COLOR)
+        gamectrl_label_position = (base_position_x, base_position_y)
+        screen.blit(gamectrl_label_surface, gamectrl_label_position)
+
+        base_position_y += 40
+        # man_font = pygame.font.SysFont('stkaiti', 20)
+        man_down_surface = man_font.render(u'翻转：上方向键；下移：下方向键', False, HANZI_COLOR)
+        man_down_position = (base_position_x, base_position_y)
+        screen.blit(man_down_surface, man_down_position)
+
+        base_position_y += 40
+        man_move_surface = man_font.render(u'左移：左方向键；右移：右方向键', False, HANZI_COLOR)
+        man_move_position = (base_position_x, base_position_y)
+        screen.blit(man_move_surface, man_move_position)
+
+        base_position_y += 40
+        man_speed_surface = man_font.render(u'快速到底：f字母键', False, HANZI_COLOR)
+        man_speed_position = (base_position_x, base_position_y)
+        screen.blit(man_speed_surface, man_speed_position)

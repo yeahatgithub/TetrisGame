@@ -41,7 +41,7 @@ def main():
         if game_state.piece:
             game_state.piece.paint()
         #绘制游戏区域网格线和墙体
-        GameDisplay.draw_game_area(screen, game_state, game_resource)
+        GameDisplay.draw_game_window(screen, game_state, game_resource)
         #让最近绘制的屏幕可见
         pygame.display.flip()
 
