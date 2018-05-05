@@ -11,7 +11,7 @@ COLUMN_NUM = 10         #游戏区域共10列
 GAME_AREA_WIDTH = CELL_WIDTH * COLUMN_NUM     #游戏区域宽度（单位：像素）
 GAME_AREA_HEIGHT = CELL_WIDTH * LINE_NUM      #游戏区域高度
 GAME_AREA_LEFT = (SCREEN_WIDTH - GAME_AREA_WIDTH) // 2      #游戏区左侧的空白区的宽度
-GAME_AREA_TOP = SCREEN_HEIGHT - GAME_AREA_HEIGHT          #游戏区顶部的空白区的宽度
+GAME_AREA_TOP = SCREEN_HEIGHT - GAME_AREA_HEIGHT - 50       #游戏区顶部的空白区的宽度
 EDGE_COLOR = (0, 0, 0)          #游戏区单元格边界线的颜色。今后，网格线会被去除。
 CELL_COLOR = (100, 100, 100)    #单元格填充色。
 BG_COLOR = (230, 230, 230)      #窗口背景色
@@ -98,7 +98,7 @@ PIECE_COLORS = {
     'Z': (255, 128, 255),
     'J': (128, 0, 255),
     'L': (0, 0, 255),
-    'I': (255, 255, 0),
+    'I': (0, 128, 0),
     'O': (255, 0, 0),
     'T': (255, 128, 0)
 }

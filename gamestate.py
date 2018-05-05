@@ -7,6 +7,7 @@ from settings import *
 from piece import Piece
 from gamewall import GameWall
 import pygame
+import time
 class GameState():
     def __init__(self, screen):
         self.screen = screen
@@ -38,6 +39,7 @@ class GameState():
         self.wall.clear()
         self.game_score = 0
         self.paused = False
+        random.seed(int(time.time()))  #每次游戏，使用不同的随机数序列
 
     def pause_game(self):
         self.stop_timer()

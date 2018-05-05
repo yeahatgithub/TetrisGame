@@ -24,7 +24,6 @@ def main():
     #屏幕背景色
     bg_color = (230, 230, 230)
 
-    random.seed(int(time.time()))    #产生不同的随机序列
     game_state = GameState(screen)
     game_resource = GameResource()
     #游戏主循环
@@ -85,6 +84,8 @@ def on_key_down(event, game_state):
             game_state.resume_game()
         else:
             game_state.pause_game()
+    elif event.key == pygame.K_r:
+        game_state.start_game()  #按r键强制重新开始游戏
 
 
 if __name__ == '__main__':
