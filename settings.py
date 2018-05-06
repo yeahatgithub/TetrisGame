@@ -113,3 +113,6 @@ HANZI_COLOR = (0, 0, 0)
 
 EDGE_WIDTH = 5      #游戏区域外框线宽度
 MARGIN_WIDTH = 40   #游戏区域外框线与其他窗口元素之间的间距
+
+DIFFICULTY_LEVEL_INTERVAL = 5000   #每过5000分，难度升1级
+TIMER_DECREASE_VALUE = 50           #难度每升1级，定时器加快50ms发出闹铃信号

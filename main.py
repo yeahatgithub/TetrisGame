@@ -19,7 +19,7 @@ def main():
     #创建屏幕对象
     screen = pygame.display.set_mode((1200, 900) )  #分辨率是1200*900
     pygame.display.set_caption("俄罗斯方块")  #窗口标题
-    pygame.key.set_repeat(10, 100)  # 一直按下某个键，每过100毫秒就引发一个KEYDOWN事件
+    pygame.key.set_repeat(100, 100)  # 一直按下某个键，每过100毫秒就引发一个KEYDOWN事件
 
     #屏幕背景色
     bg_color = (230, 230, 230)

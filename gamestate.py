@@ -19,6 +19,7 @@ class GameState():
         self.stopped = True
         self.paused = False
         self.session_count = 0
+        self.difficulty = 1
 
     def set_timer(self, timer_interval):
         pygame.time.set_timer(pygame.USEREVENT, timer_interval)
@@ -28,6 +29,11 @@ class GameState():
 
     def add_score(self, score):
         self.game_score += score
+        difficulty = self.game_score // DIFFICULTY_LEVEL_INTERVAL + 1
+        if difficulty > self.difficulty:
+            self.difficulty += 1
+            self.timer_interval -= TIMER_DECREASE_VALUE
+            pygame.time.set_timer(pygame.USEREVENT, self.timer_interval)
 
     def start_game(self):
         self.stopped = False

@@ -23,7 +23,7 @@ class GameDisplay():
 
     @staticmethod
     def draw_game_window(screen, game_state, game_resource):
-        '''绘制游戏区域'''
+        '''绘制游戏窗口'''
         GameDisplay.draw_border(screen, GAME_AREA_LEFT - EDGE_WIDTH, GAME_AREA_TOP, LINE_NUM, COLUMN_NUM)
 
         GameDisplay.draw_wall(game_state.wall)
@@ -36,6 +36,7 @@ class GameDisplay():
             GameDisplay.draw_pause_prompt(screen, game_resource)
         GameDisplay.draw_next_piece(screen, game_state.next_piece)
         GameDisplay.draw_mannual(screen)
+        GameDisplay.draw_difficulty_level(screen, game_state.difficulty)
 
     @staticmethod
     def draw_wall(game_wall):
@@ -48,7 +49,7 @@ class GameDisplay():
     @staticmethod
     def draw_score(screen, score):
         '''绘制游戏得分'''
-        score_label_font = pygame.font.SysFont('simhei', 28)   #换成'arial'，无法显示中文。
+        score_label_font = pygame.font.SysFont('stkaiti', 28)   #换成'arial'，无法显示中文。
 
         score_label_surface = score_label_font.render(u'得分：', False, SCORE_LABEL_COLOR)
         score_label_position = (GAME_AREA_LEFT + COLUMN_NUM * CELL_WIDTH + 40, GAME_AREA_TOP + 6 * CELL_WIDTH)
@@ -187,3 +188,19 @@ class GameDisplay():
         man_speed_surface = man_font.render(u'快速到底：f字母键', False, HANZI_COLOR)
         man_speed_position = (base_position_x, base_position_y)
         screen.blit(man_speed_surface, man_speed_position)
+
+    @staticmethod
+    def draw_difficulty_level(screen, level):
+        '''绘制游戏难度级别'''
+        level_label_font = pygame.font.SysFont('stkaiti', 28)  # 换成'arial'，无法显示中文。
+
+        level_label_surface = level_label_font.render(u'难度：', False, SCORE_LABEL_COLOR)
+        level_label_position = (GAME_AREA_LEFT + COLUMN_NUM * CELL_WIDTH + MARGIN_WIDTH, GAME_AREA_TOP + 8 * CELL_WIDTH)
+        screen.blit(level_label_surface, level_label_position)
+
+        level_font = pygame.font.SysFont('arial', 36)
+        level_surface = level_font.render(str(level), False, SCORE_COLOR)
+        level_label_width = level_label_surface.get_width()
+        level_position = (level_label_position[0] + level_label_width + 20, level_label_position[1])
+        screen.blit(level_surface, level_position)
+
