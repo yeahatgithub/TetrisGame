@@ -26,6 +26,7 @@ def main():
 
     game_state = GameState(screen)
     game_resource = GameResource()
+    game_resource.play_bg_music()
     #游戏主循环
     while True:
         #方块触底的话
@@ -33,10 +34,10 @@ def main():
             game_state.touch_bottom()
 
         #监视键盘和鼠标事件
-        check_events(game_state)
+        check_events(game_state, game_resource)
 
-        #设定屏幕背景色
-        screen.fill(bg_color)
+        #设定屏幕背景
+        screen.blit(game_resource.load_bg_img(), (0, 0))
         #绘制方块
         if game_state.piece:
             game_state.piece.paint()
@@ -46,18 +47,18 @@ def main():
         pygame.display.flip()
 
 
-def check_events(game_state):
+def check_events(game_state, game_resource):
     '''捕捉和处理键盘按键事件'''
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            on_key_down(event, game_state)
+            on_key_down(event, game_state, game_resource)
         elif event.type == pygame.USEREVENT:
             game_state.piece.move_down()
 
 
-def on_key_down(event, game_state):
+def on_key_down(event, game_state, game_resource):
     if not game_state.paused and event.key == pygame.K_DOWN:
         # print("向下方向键被按下")
         if game_state.piece:
@@ -86,6 +87,8 @@ def on_key_down(event, game_state):
             game_state.pause_game()
     elif event.key == pygame.K_r:
         game_state.start_game()  #按r键强制重新开始游戏
+    elif event.key == pygame.K_m:
+        game_resource.pause_bg_music()
 
 
 if __name__ == '__main__':
