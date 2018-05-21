@@ -89,6 +89,8 @@ def on_key_down(event, game_state, game_resource):
         game_state.start_game()  #按r键强制重新开始游戏
     elif event.key == pygame.K_m:
         game_resource.pause_bg_music()
+    elif event.key == pygame.K_q:
+        sys.exit()
 
 
 if __name__ == '__main__':
