@@ -4,7 +4,6 @@
 # @Copyright:  MIT
 
 from settings import *
-from pygame import *
 import pygame
 
 class Piece():
@@ -26,5 +25,5 @@ class Piece():
         cell_position = (x * CELL_WIDTH + GAME_AREA_LEFT + 1,
                          y * CELL_WIDTH + GAME_AREA_TOP + 1)
         cell_width_height = (CELL_WIDTH - 2, CELL_WIDTH - 2)
-        cell_rect = Rect(cell_position, cell_width_height)
+        cell_rect = pygame.Rect(cell_position, cell_width_height)
         pygame.draw.rect(self.screen, CELL_COLOR, cell_rect)
