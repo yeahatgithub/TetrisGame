@@ -14,71 +14,34 @@ EDGE_COLOR = (0, 0, 0)          #游戏区单元格边界线的颜色。今后�
 CELL_COLOR = (100, 100, 100)    #单元格填充色。
 BG_COLOR = (230, 230, 230)      #窗口背景色
 
-#S型方块的姿态序列。首先是未翻转的姿态，接着是向右翻转90度的姿态。再翻转90度，将回到未翻转前的姿态。
-S_SHAPE_TEMPLATE = [['.OO.',
+## 方块的形状矩阵
+S_SHAPE_TEMPLATE = ['.OO.',
                      'OO..',
-                     '....'],
-                    ['.O..',
-                     '.OO.',
-                     '..O.']]
+                     '....']
 
-Z_SHAPE_TEMPLATE = [['OO..',
+Z_SHAPE_TEMPLATE = ['OO..',
                      '.OO.',
-                     '....'],
-                    ['..O.',
-                     '.OO.',
-                     '.O..']]
+                     '....']
 
-I_SHAPE_TEMPLATE = [['.O..',
+I_SHAPE_TEMPLATE = ['.O..',
                      '.O..',
                      '.O..',
-                     '.O..'],
-                    ['....',
-                     'OOOO',
-                     '....',
-                     '....']]
+                     '.O..']
 
-O_SHAPE_TEMPLATE = [['OO',
-                     'OO']]
+O_SHAPE_TEMPLATE = ['OO',
+                     'OO']
 
-J_SHAPE_TEMPLATE = [['..O.',
+J_SHAPE_TEMPLATE = ['..O.',
                      '..O.',
-                     '.OO.'],
-                    ['O...',
-                     'OOO.',
-                     '....'],
-                    ['.OO.',
-                     '.O..',
-                     '.O..'],
-                    ['OOO.',
-                     '..O.',
-                     '....']]
+                     '.OO.']
 
-L_SHAPE_TEMPLATE = [['.O..',
+L_SHAPE_TEMPLATE = ['.O..',
                      '.O..',
-                     '.OO.'],
-                    ['....',
-                     'OOO.',
-                     'O...'],
-                    ['.OO.',
-                     '..O.',
-                     '..O.'],
-                    ['..O.',
-                     'OOO.',
-                     '....']]
+                     '.OO.']
 
-T_SHAPE_TEMPLATE = [['.O..',
+T_SHAPE_TEMPLATE = ['.O..',
                      'OOO.',
-                     '....'],
-                    ['.O..',
-                     '.OO.',
-                     '.O..'],
-                    ['....',
-                     'OOO.',
-                     '.O..'],
-                    ['..O.',
-                     '.OO.',
-                     '..O.']]
+                     '....']
 
 PIECES = {'S': S_SHAPE_TEMPLATE,
           'Z': Z_SHAPE_TEMPLATE,

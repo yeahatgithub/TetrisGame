@@ -12,16 +12,14 @@ class Piece():
         self.x = 3
         self.y = 0
         self.shape = shape
-        self.turn = 0   #翻转了几次，决定显示的模样
         self.screen = screen
 
     def paint(self):
         shape_template = PIECES[self.shape]
-        shape_turn = shape_template[self.turn]
-        #print(shape_turn)
-        for r in range(len(shape_turn)):
-            for c in range(len(shape_turn[0])):
-                if shape_turn[r][c] == 'O':
+
+        for r in range(len(shape_template)):
+            for c in range(len(shape_template[0])):
+                if shape_template[r][c] == 'O':
                     self.draw_cell(self.x + c, self.y + r)
 
     def draw_cell(self, x, y):
