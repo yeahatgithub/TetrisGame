@@ -6,6 +6,8 @@
 SCREEN_WIDTH = 1200      #窗口宽度
 SCREEN_HEIGHT = 900     #窗口高度
 CELL_WIDTH = 40         #方块在20*10个单元格组成的游戏区内移动。每个单元格的边长是40个像素。
+LINE_NUM = 20           #游戏区域共20行
+COLUMN_NUM = 10         #游戏区域共10列
 GAME_AREA_WIDTH = CELL_WIDTH * 10       #一行10个单元格
 GAME_AREA_HEIGHT = CELL_WIDTH * 20      #一共20行
 GAME_AREA_LEFT = (SCREEN_WIDTH - GAME_AREA_WIDTH) // 2      #游戏区左侧的空白区的宽度

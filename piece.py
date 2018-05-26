@@ -32,12 +32,45 @@ class Piece():
 
     def move_right(self):
         '''方块向右移动1个单元格'''
-        self.x += 1
+        if self.can_move_right():
+            self.x += 1
 
     def move_left(self):
         '''方块向左移动1格'''
-        self.x -= 1
+        if self.can_move_left():
+            self.x -= 1
 
     def move_down(self):
         '''方块向下移动1格'''
-        self.y += 1
+        if self.can_move_down():
+            self.y += 1
+
+    def can_move_right(self):
+        shape_mtx = PIECES[self.shape]
+        # print(shape_mtx)
+        for r in range(len(shape_mtx)):
+            for c in range(len(shape_mtx[0])):
+                if shape_mtx[r][c] == 'O':
+                    if self.x + c >= COLUMN_NUM - 1:
+                        return False
+        return True
+
+    def can_move_left(self):
+        shape_mtx = PIECES[self.shape]
+        # print(shape_mtx)
+        for r in range(len(shape_mtx)):
+            for c in range(len(shape_mtx[0])):
+                if shape_mtx[r][c] == 'O':
+                    if self.x + c <= 0:
+                        return False
+        return True
+
+    def can_move_down(self):
+        shape_mtx = PIECES[self.shape]
+        # print(shape_mtx)
+        for r in range(len(shape_mtx)):
+            for c in range(len(shape_mtx[0])):
+                if shape_mtx[r][c] == 'O':
+                    if self.y + r >= LINE_NUM - 1:
+                        return False
+        return True
