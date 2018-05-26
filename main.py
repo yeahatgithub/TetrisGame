@@ -22,11 +22,11 @@ def main():
     #游戏主循环
     while True:
         #监视键盘和鼠标事件
-        check_events()
+        check_events(piece)
 
         #设定屏幕背景色
         screen.fill(bg_color)
-        #绘制直线
+        #绘制游戏区域网格线
         draw_game_area(screen)
         #绘制方块
         piece.paint()
@@ -42,20 +42,23 @@ def draw_game_area(screen):
         pygame.draw.line(screen, EDGE_COLOR, (GAME_AREA_LEFT + c * CELL_WIDTH, GAME_AREA_TOP),
                          (GAME_AREA_LEFT + c * CELL_WIDTH, GAME_AREA_TOP + GAME_AREA_HEIGHT))
 
-def check_events():
+def check_events(piece):
     '''捕捉和处理键盘按键事件'''
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
-                print("向下方向键被按下")
+                # print("向下方向键被按下")
+                piece.move_down()
             elif event.key == pygame.K_UP:
                 print("向上方向键被按下")
             elif event.key == pygame.K_RIGHT:
-                print("向右方向键被按下")
+                # print("向右方向键被按下")
+                piece.move_right()
             elif event.key == pygame.K_LEFT:
-                print("向右方向键被按下")
+                # print("向左方向键被按下")
+                piece.move_left()
 
 
 if __name__ == '__main__':
